@@ -1,0 +1,763 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Manrope', 'DM Sans', sans-serif;
+    overflow-x: hidden;  /* Asegura que no haya desbordamiento horizontal */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #F6F3E7;
+    color: #3B443E;
+    line-height: 1.6;
+    overflow-x: hidden; /* Asegura que no haya desbordamiento horizontal */
+    margin: 0;
+}
+
+/* General para el header */
+#Header {
+    height: 600px;
+    min-height: 600px;
+    background-image: url('./images/Header.png'); 
+    background-size: cover; 
+    background-position: center; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    position: relative;
+}
+
+/* Barra de navegación principal */
+.barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo - solo se muestra en pantallas grandes */
+#logo-large {
+    display: block;
+    max-width: 350px;
+    height: auto;
+}
+
+/* Logo para pantallas pequeñas - solo se muestra en pantallas pequeñas */
+#logo-small {
+    display: none;
+    max-width: 100px; 
+    height: auto; 
+}
+
+/* Navbar - por defecto se muestra en pantallas grandes */
+.navbar {
+    display: flex;
+    gap: 18px; 
+    justify-content: center; 
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #F6F3E7; 
+    font-size: 22px;
+}
+
+.navbar a:hover {
+    color: #F2994A; 
+}
+
+/* Menú hamburguesa */
+.menu-hamburguesa {
+    display: none; 
+    cursor: pointer;
+}
+
+.hamburger-icon {
+    width: 30px;
+    height: auto;
+}
+
+/* Título */
+h1 {
+    color: white; 
+    font-size: 2rem; 
+    text-align: right; 
+    position: absolute;
+    bottom: 20px; 
+    left: 20px; 
+    
+}
+
+/* Fondo completo para el menú hamburguesa */
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(17, 22, 16, 0.9); 
+    z-index: 999; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Navbar dentro del overlay */
+.overlay-navbar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+}
+
+.overlay-navbar a {
+    text-decoration: none;
+    color: #F6F3E7; 
+    font-size: 2rem; 
+    font-family: Manrope, sans-serif; 
+    transition: color 0.3s ease;
+}
+
+.overlay-navbar a:hover {
+    color: #F2994A; 
+}
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    /* Ocultar el logo grande y mostrar el pequeño en pantallas pequeñas */
+    #logo-large {
+        display: none;
+    }
+    
+    #logo-small {
+        display: block;
+        max-width: 70px; 
+        height: auto;
+    }
+
+    /* Mostrar el menú hamburguesa en pantallas pequeñas */
+    .menu-hamburguesa {
+        display: block;
+    }
+
+    /* Ocultar el navbar por defecto en pantallas pequeñas */
+    .navbar {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center; 
+    }
+
+    /* Reducir el tamaño del título en pantallas pequeñas */
+    h1 {
+        display: none; 
+    }
+}
+
+/* Barra de información */
+.info-bar {
+    background-color: #F2994A;  
+    color: #3B443E; 
+    padding: 10px 0;  
+    font-family: Manrope, sans-serif;
+    font-size: 18px;  
+}
+
+.info-bar .container {
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;  
+}
+
+/* Estilo para los elementos dentro de la barra */
+.info-item {
+    margin: 0 15px;
+    font-weight: normal;
+}
+
+/* Efecto hover en los items */
+.info-item:hover {
+    color: #F6F3E7; 
+}
+
+/* Resaltar las etiquetas dentro de la barra (como "Dirección", "Teléfono") */
+.info-item strong {
+    font-weight: bold;
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .info-bar .container {
+        flex-direction: column; 
+        text-align: center; 
+    }
+
+    .info-item {
+        margin: 10px 0;  
+        font-size: 16px; 
+    }
+}
+
+/* Barra de búsqueda */
+.search {
+    background-color: #3B443E; 
+    padding: 40px 0;
+    color: #F6F3E7; 
+}
+
+.search-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.search-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Estilos para el formulario */
+.search-inputs {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap; 
+    margin-top: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 180px; 
+    flex: 1; 
+}
+
+.input-group label {
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #F6F3E7;
+}
+
+.input-group input,
+.input-group select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #F6F3E7; 
+    border-radius: 5px;
+    background-color: #F6F3E7; 
+    color: #3B443E; 
+    width: 100%;
+}
+
+.input-group input::placeholder {
+    color: #3B443E; 
+}
+
+/* Botón de búsqueda */
+.search-btn {
+    background-color: #F2994A; 
+    color: #3B443E;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 35px; 
+    width: auto;
+    align-self: center; 
+}
+
+.search-btn:hover {
+    background-color: #e6892f; 
+}
+
+
+
+/* Servicios */
+.services {
+    background-color: #F6F3E7;
+    padding: 40px 60px;
+    margin: 0 auto;  
+    max-width: 1200px; 
+    border-radius: 10px;  
+    text-align: left ;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); 
+}
+
+/* Título */
+.services h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #3B443E; 
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Párrafos generales */
+.services p {
+    font-size: 18px;
+    color: #3B443E;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Tarjetas de contenido */
+.service-card {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Efecto al pasar el mouse sobre la tarjeta */
+.service-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Listas dentro de las tarjetas */
+.service-card ul {
+    margin-left: 0;
+    padding-left: 0;
+    list-style-type: none; 
+}
+
+.service-card ul li {
+    font-size: 18px;
+    color: #3B443E; 
+    margin-bottom: 10px;
+    text-align: left; 
+    padding-left: 20px;
+}
+
+/* Estilos de enlace */
+.services a {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 30px;
+    background-color: #F2994A; 
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.services a:hover {
+    background-color: #D68F2C; 
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+    .services {
+        padding: 20px;
+    }
+
+    .service-card {
+        margin: 15px 0;
+    }
+}
+
+/* Estilo para las listas */
+.service-card ul li:before {
+    content: "✔"; 
+    color: #F2994A;
+    padding-right: 10px;
+    font-weight: bold;
+}
+
+/* PROPIEDADES DESTACADAS*/
+/* Estilo general para el contenedor de las tarjetas */
+.properties {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0 auto;
+    max-width: 1800px;
+}
+
+/* Estilo para cada tarjeta */
+.property-card {
+    background: #fff;
+    width: 30%; /* Porcentaje del ancho de la pantalla */
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    transition: width 0.3s ease; /* Transición para que el cambio de tamaño sea suave */
+}
+
+/* Imagen de la tarjeta */
+.property-card img {
+    width: 100%;
+    height: 300px;
+    border-radius: 8px 8px 0 0;
+}
+
+/* Título de la tarjeta */
+.property-card h3 {
+    padding: 20px 0;
+}
+
+/* Descripción de la tarjeta */
+.property-card p {
+    padding: 0 15px 15px;
+    color: #666;
+}
+
+/* Media query para pantallas más pequeñas (por ejemplo, 1024px o menos) */
+@media (max-width: 1024px) {
+    .property-card {
+        width: 45%; /* Las tarjetas ocuparán el 45% del ancho en pantallas medianas */
+    }
+}
+
+/* Media query para pantallas aún más pequeñas (por ejemplo, 768px o menos) */
+@media (max-width: 768px) {
+    .property-card {
+        width: 100%; /* Las tarjetas ocuparán el 100% del ancho en pantallas pequeñas */
+    }
+}
+
+
+
+/* Estilos generales para la sección de contacto */
+#contacto {
+    background-color: #F6F3E7;
+    padding: 40px;
+    margin: 20px auto;
+    max-width: 1000px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+} 
+
+
+/* Título de la sección */
+#contacto h2 {
+    color: #3B443E;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    
+}
+
+
+/* Estilos generales para el formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    
+ 
+}
+
+/* Estilos para las etiquetas del formulario */
+form label {
+    color: #3B443E;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+/* Estilos para los campos de entrada (input y textarea) */
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"], 
+form textarea {
+    background-color: #F6F3E7;
+    border: 1px solid #3B443E;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    color: #3B443E;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estilos para los campos de entrada (input y textarea) */
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="tel"]:focus, 
+form textarea :focus {
+    border-color: #F2994A; 
+    outline: none; 
+    
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: #F2994A;
+    box-shadow: 0 0 8px rgba(242, 153, 74, 0.6);
+    outline: none;
+}
+
+/* Estilos para el campo textarea */
+form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+form textarea {
+    min-height: 120px;
+    resize: none;
+}
+
+/* Estilos para los botones */
+form button {
+    background-color: #F2994A;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Efecto hover para el botón */
+form button:hover {
+    background-color: #e6891d;
+    transform: translateY(-2px);
+}
+
+form button:active {
+    transform: translateY(0); 
+}
+
+
+.hh2{
+    font-size: 28px;
+    text-align: center;
+    padding-bottom: 20px; 
+    margin-bottom: 40px;
+}
+
+/* FOOTER */
+footer {
+    background-color: #3B443E;
+    color: white;
+    padding: 10px 0;
+    font-family: Arial, sans-serif;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%; 
+}
+
+.footer-left,
+.footer-right {
+    flex-basis: 20%; 
+}
+
+.footer-center {
+    flex-grow: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-left ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-left li {
+    margin: 5px 0;
+}
+
+.footer-left a {
+    text-decoration: none;
+    color: #F6F3E7; 
+    transition: color 0.3s ease;
+}
+
+.footer-left a:hover {
+    color: #F2994A; 
+}
+
+.footer-center .logo {
+    max-width: 50px;
+    height: auto;
+}
+
+.footer-right a {
+    text-decoration: none;
+    color: #F2994A;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.footer-right a:hover {
+    color: #F6F3E7; 
+}
+
+.footer p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+/* Iconos de redes sociales */
+.footer-right .social-icon {
+    width: 30px; 
+    height: auto;
+    fill: #F6F3E7;  
+    transition: fill 0.3s ease;  
+    margin: 0 10px;  
+}
+
+.footer-right .social-icon:hover {
+    fill: #F2994A;  
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-left, .footer-right {
+        margin-bottom: 10px;
+    }
+}
+
+/* Estilos generales para la página de login */
+.login {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #F6F3E7;
+    border-radius: 8px;
+
+}
+
+/* Título de la página de login */
+.login h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #3B443E;
+    margin-bottom: 20px;
+}
+
+/* Descripción debajo del título */
+.login p {
+    text-align: center;
+    color: #3B443E;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+/* Estilos para el formulario */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #3B443E;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;  
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #3B443E;
+    box-sizing: border-box; 
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #F2994A;
+}
+
+button.btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #F2994A;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.btn:hover {
+    background-color: #F6F3E7;
+    color: #F2994A;
+}
+
+.login-options {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-options a {
+    text-decoration: none;
+    color: #F2994A;
+}
+
+.login-options a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 3em;
+    }
+
+    header p {
+        font-size: 1em;
+    }
+
+    .property-card {
+        width: 45%;
+    }
+}
+
+@media (max-width: 576px) {
+    header {
+        height: 60vh;
+    }
+
+    header h1 {
+        font-size: 2.5em;
+    }
+
+    .property-card {
+        width: 90%;
+    }
+}
