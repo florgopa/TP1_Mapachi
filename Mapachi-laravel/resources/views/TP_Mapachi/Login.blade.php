@@ -15,7 +15,7 @@
                     <img src="./images/Sin título-1.png" alt="Logo de la empresa" class="logo">
                 </a>
                 <nav class="navbar">
-                    <a href="{{ url('/index') }}">Inicio</a>
+                    <a href="{{ url('/') }}">Inicio</a>
                     <a href="Nosotros.html">Nosotros</a>
                     <a href="Contacto.html">Contacto</a>
                     <a href="{{ url('/login') }}">Mi cuenta</a>

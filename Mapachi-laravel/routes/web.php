@@ -11,7 +11,7 @@ Route::get('/login', function () {
 });
 
 
-Route::get('/index', function () {
+Route::get('/', function () {
     return view('TP_Mapachi.Index');
 });
 

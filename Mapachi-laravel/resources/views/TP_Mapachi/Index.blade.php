@@ -28,7 +28,7 @@
                 <img src="./images/Naranja.png" alt="Logo pequeño" class="logo" id="logo-small">
             </a>
             <nav class="navbar">
-                <a href="{{ url('/index') }}">Inicio</a>
+                <a href="{{ url('/') }}">Inicio</a>
                 <a href="">Nosotros</a>
                 <a href="#contacto">Contacto</a>
                 <a href="{{ url('/login') }}">Mi cuenta</a>
@@ -44,7 +44,7 @@
     <!-- Overlay para el menú hamburguesa -->
     <div class="menu-overlay" id="menu-overlay">
         <nav class="overlay-navbar">
-            <a href="{{ url('/index') }}">Inicio</a>
+            <a href="{{ url('/') }}">Inicio</a>
             <a href="">Nosotros</a>
             <a href="#contacto">Contacto</a>
             <a href="{{ url('/login') }}">Mi cuenta</a>
