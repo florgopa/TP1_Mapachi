@@ -1,0 +1,321 @@
+/* =========================================================
+   Mapachi Inmobiliaria - Estilos generales
+   ========================================================= */
+
+:root {
+    --color-primary: #0b3d3f;
+    --color-primary-light: #14595c;
+    --color-accent: #d97a3c;
+    --color-accent-light: #f2a765;
+    --color-bg: #faf7f2;
+    --color-card: #ffffff;
+    --color-text: #24312f;
+    --color-muted: #6b7c79;
+    --color-border: #e4ddd2;
+    --color-success: #2e7d32;
+    --color-error: #c0392b;
+    --radius: 10px;
+    --shadow: 0 2px 10px rgba(11, 61, 63, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.5;
+}
+
+a { color: var(--color-primary); text-decoration: none; }
+a:hover { color: var(--color-accent); }
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section { padding: 40px 20px; }
+.section.narrow { max-width: 640px; margin: 0 auto; }
+
+/* --- Header / Nav --- */
+.site-header {
+    background: var(--color-primary);
+    color: #fff;
+}
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 14px 20px;
+}
+.logo {
+    color: #fff !important;
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+.logo-img-long {
+    height: 32px;
+    width: auto;
+}
+.logo span { font-weight: 400; opacity: .85; font-size: 1rem; }
+.navbar { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.navbar a { color: #f2ede4 !important; font-size: .95rem; }
+.navbar a:hover { color: var(--color-accent-light) !important; }
+.nav-user { color: #cfd9d8; font-size: .85rem; }
+.nav-user small { opacity: .7; }
+.btn-link {
+    color: var(--color-accent-light) !important;
+    font-weight: 600;
+}
+
+/* --- Footer --- */
+.site-footer {
+    background: var(--color-primary);
+    color: #d9d3c6;
+    margin-top: 60px;
+}
+.footer-inner {
+    padding: 20px;
+    text-align: center;
+    font-size: .85rem;
+}
+.footer-links a { color: #d9d3c6 !important; }
+
+/* --- Hero --- */
+.hero {
+    background:
+        linear-gradient(135deg, rgba(11, 61, 63, 0.82), rgba(20, 89, 92, 0.75)),
+        url('../images/bannermapachi.jpg') center 60% / cover no-repeat;
+    color: #fff;
+    padding: 90px 20px;
+    text-align: center;
+}
+.hero h1 { font-size: 2.2rem; margin-bottom: 10px; text-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+.hero p { color: #f2ede4; margin-bottom: 25px; text-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+
+/* --- Botones --- */
+.btn {
+    display: inline-block;
+    background: var(--color-accent);
+    color: #fff !important;
+    padding: 10px 22px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-size: .95rem;
+}
+.btn:hover { background: var(--color-accent-light); }
+.btn-full { width: 100%; margin-top: 10px; }
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary) !important;
+}
+.btn-danger { color: var(--color-error) !important; }
+
+/* --- Alerts / flash --- */
+.alert {
+    padding: 12px 20px;
+    text-align: center;
+    font-weight: 600;
+}
+.alert-success { background: #e3f4e1; color: var(--color-success); }
+.alert-error { background: #fbe4e1; color: var(--color-error); }
+
+/* --- Cards de propiedades --- */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+.property-card {
+    background: var(--color-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.property-img, .property-img-large { background: #ece6db; }
+.property-img { height: 160px; }
+.property-img-large { height: 280px; border-radius: var(--radius); margin: 15px 0; overflow: hidden; }
+.property-img img, .property-img-large img { width: 100%; height: 100%; object-fit: cover; }
+.no-image {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-muted);
+    font-size: .85rem;
+}
+.property-body { padding: 16px; }
+.property-price { font-size: 1.2rem; font-weight: 700; color: var(--color-primary); margin: 6px 0; }
+.property-zona, .property-agente { color: var(--color-muted); font-size: .9rem; margin: 2px 0; }
+.card-actions { display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
+.inline-form { display: inline; }
+
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: .75rem;
+    font-weight: 600;
+    margin-right: 6px;
+}
+.badge-venta { background: #dbeee0; color: #1e6b3a; }
+.badge-alquiler { background: #e3edfa; color: #1c5aa8; }
+.badge-pozo { background: #fbe9d7; color: #a8590f; }
+.badge-estado-disponible { background: #e6f4ea; color: #2e7d32; }
+.badge-estado-reservada { background: #fff3cd; color: #8a6d3b; }
+.badge-estado-alquilada, .badge-estado-vendida { background: #f0f0f0; color: #666; }
+
+/* --- Filtros --- */
+.filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+.filters select, .filters input {
+    padding: 8px 10px;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+}
+
+/* --- Formularios --- */
+.form-card {
+    background: var(--color-card);
+    padding: 25px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.form-card label { font-weight: 600; margin-top: 10px; font-size: .9rem; }
+.form-card input, .form-card select, .form-card textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    font-size: .95rem;
+    font-family: inherit;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.checkbox-label { display: flex; align-items: center; gap: 8px; font-weight: 400 !important; }
+.checkbox-label input { width: auto; }
+
+/* --- Login --- */
+.login-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+}
+.login-box {
+    background: #fff;
+    padding: 40px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+}
+.login-box h1 { font-size: 1.4rem; color: var(--color-primary); }
+.login-logo { height: 42px; width: auto; margin-bottom: 6px; }
+.login-box h2 { font-size: 1rem; color: var(--color-muted); font-weight: 400; margin-bottom: 20px; }
+.login-box form { display: flex; flex-direction: column; text-align: left; gap: 4px; }
+.login-box label { font-weight: 600; font-size: .85rem; margin-top: 8px; }
+.login-box input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+}
+.login-hint {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--color-border);
+    font-size: .8rem;
+    color: var(--color-muted);
+    text-align: left;
+}
+.login-hint ul { padding-left: 18px; margin: 6px 0; }
+
+/* --- Tablas --- */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-card);
+    box-shadow: var(--shadow);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+.table th, .table td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+    font-size: .9rem;
+}
+.table th { background: var(--color-primary); color: #fff; }
+
+/* --- Paginación --- */
+.pagination {
+    display: flex;
+    gap: 8px;
+    margin-top: 25px;
+    justify-content: center;
+}
+.pagination a {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    color: var(--color-text) !important;
+}
+.pagination a.active {
+    background: var(--color-primary);
+    color: #fff !important;
+    border-color: var(--color-primary);
+}
+
+/* --- Info bar / errores --- */
+.info-bar {
+    background: var(--color-card);
+    padding: 14px 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    font-size: .9rem;
+}
+.error-page {
+    text-align: center;
+    padding: 100px 20px;
+}
+.error-page h1 { font-size: 4rem; color: var(--color-accent); margin: 0; }
+
+@media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; }
+    .header-inner { flex-direction: column; align-items: flex-start; }
+}
