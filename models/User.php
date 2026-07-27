@@ -52,6 +52,21 @@ class User
         return $stmt->fetchAll();
     }
 
+    /** Cantidad de usuarios agrupados por rol (para el dashboard) */
+    public function countByRole(): array
+    {
+        $stmt = $this->db->query(
+            "SELECT r.nombre AS role, COUNT(*) AS total
+             FROM users u JOIN roles r ON r.id = u.role_id
+             GROUP BY r.nombre"
+        );
+        $result = ['administrador' => 0, 'agente' => 0, 'cliente' => 0];
+        foreach ($stmt->fetchAll() as $row) {
+            $result[$row['role']] = (int) $row['total'];
+        }
+        return $result;
+    }
+
     /** Agentes activos, para asignar como responsables de una propiedad */
     public function agentes(): array
     {

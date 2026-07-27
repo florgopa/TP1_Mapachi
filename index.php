@@ -35,6 +35,8 @@ $router->post('/login', 'AuthController@login');
 $router->get('/logout', 'AuthController@logout');
 
 // --- Propiedades (CRUD principal) ---
+$router->get('/dashboard', 'DashboardController@index');
+$router->get('/mis-propiedades', 'PropertyController@misPropiedades');
 $router->get('/propiedades', 'PropertyController@index');
 $router->get('/propiedades/nueva', 'PropertyController@showCreate');
 $router->post('/propiedades', 'PropertyController@store');
@@ -42,6 +44,24 @@ $router->get('/propiedades/{id}', 'PropertyController@show');
 $router->get('/propiedades/{id}/editar', 'PropertyController@showEdit');
 $router->post('/propiedades/{id}', 'PropertyController@update');
 $router->post('/propiedades/{id}/eliminar', 'PropertyController@destroy');
+
+// --- Mi perfil (cualquier usuario logueado) ---
+$router->get('/perfil', 'ProfileController@show');
+$router->post('/perfil', 'ProfileController@update');
+
+// --- Reclamos ---
+$router->get('/reclamos', 'ReclamoController@index');
+$router->get('/reclamos/nuevo', 'ReclamoController@showCreate');
+$router->post('/reclamos', 'ReclamoController@store');
+$router->get('/reclamos/{id}', 'ReclamoController@show');
+$router->post('/reclamos/{id}/estado', 'ReclamoController@updateEstado');
+
+// --- Comprobantes de pago ---
+$router->get('/comprobantes', 'ComprobanteController@index');
+$router->get('/comprobantes/nuevo', 'ComprobanteController@showCreate');
+$router->post('/comprobantes', 'ComprobanteController@store');
+$router->get('/comprobantes/{id}', 'ComprobanteController@show');
+$router->post('/comprobantes/{id}/estado', 'ComprobanteController@updateEstado');
 
 // --- Usuarios (solo administrador) ---
 $router->get('/usuarios', 'UserController@index');

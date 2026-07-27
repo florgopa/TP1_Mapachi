@@ -51,6 +51,34 @@ class Property
         return (int) $stmt->fetchColumn();
     }
 
+    /** Cantidad de propiedades agrupadas por estado (para el dashboard) */
+    public function countByEstado(array $filters = []): array
+    {
+        [$whereSql, $params] = $this->buildWhere($filters);
+        $stmt = $this->db->prepare("SELECT estado, COUNT(*) AS total FROM properties p $whereSql GROUP BY estado");
+        $stmt->execute($params);
+
+        $result = ['disponible' => 0, 'reservada' => 0, 'alquilada' => 0, 'vendida' => 0];
+        foreach ($stmt->fetchAll() as $row) {
+            $result[$row['estado']] = (int) $row['total'];
+        }
+        return $result;
+    }
+
+    /** Cantidad de propiedades agrupadas por tipo (para el dashboard) */
+    public function countByTipo(array $filters = []): array
+    {
+        [$whereSql, $params] = $this->buildWhere($filters);
+        $stmt = $this->db->prepare("SELECT tipo, COUNT(*) AS total FROM properties p $whereSql GROUP BY tipo");
+        $stmt->execute($params);
+
+        $result = ['venta' => 0, 'alquiler' => 0, 'pozo' => 0];
+        foreach ($stmt->fetchAll() as $row) {
+            $result[$row['tipo']] = (int) $row['total'];
+        }
+        return $result;
+    }
+
     /** Arma el WHERE + params compartido entre paginated() y count() */
     private function buildWhere(array $filters): array
     {
@@ -112,6 +140,20 @@ class Property
         $stmt->execute(['id' => $id]);
         $property = $stmt->fetch();
         return $property ?: null;
+    }
+
+    /** Todas las propiedades asociadas a un cliente (sin paginar, para "Mis propiedades" y selects) */
+    public function misPropiedades(int $clienteId): array
+    {
+        $stmt = $this->db->prepare(
+            'SELECT p.*, a.nombre AS agente_nombre
+             FROM properties p
+             JOIN users a ON a.id = p.agente_id
+             WHERE p.propietario_id = :cliente_id
+             ORDER BY p.created_at DESC'
+        );
+        $stmt->execute(['cliente_id' => $clienteId]);
+        return $stmt->fetchAll();
     }
 
     public function create(array $data): int

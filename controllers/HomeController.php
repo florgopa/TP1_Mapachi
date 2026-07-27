@@ -10,6 +10,10 @@ class HomeController extends Controller
         $destacadas = $propertyModel->paginated(3, 0, ['estado' => null]);
         // (si querés filtrar solo 'disponible', se puede agregar ese filtro al modelo)
 
-        $this->render('home/index', ['destacadas' => $destacadas, 'csrf' => csrf_token()]);
+        $this->render('home/index', [
+            'destacadas' => $destacadas,
+            'csrf' => csrf_token(),
+            'transparentHeader' => true,
+        ]);
     }
 }

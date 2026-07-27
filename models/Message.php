@@ -40,6 +40,12 @@ class Message
         return (int) $this->db->query('SELECT COUNT(*) FROM messages')->fetchColumn();
     }
 
+    /** Cantidad de mensajes sin leer (para el dashboard) */
+    public function countUnread(): int
+    {
+        return (int) $this->db->query('SELECT COUNT(*) FROM messages WHERE leido = 0')->fetchColumn();
+    }
+
     public function markAsRead(int $id): void
     {
         $stmt = $this->db->prepare('UPDATE messages SET leido = 1 WHERE id = :id');

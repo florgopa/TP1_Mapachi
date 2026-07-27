@@ -35,7 +35,7 @@ class AuthController extends Controller
 
         Auth::login($user);
         set_flash('success', 'Bienvenido/a, ' . $user['nombre'] . '.');
-        redirect('/');
+        redirect(Auth::hasRole('administrador', 'agente') ? '/dashboard' : '/');
     }
 
     public function logout(): void

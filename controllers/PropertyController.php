@@ -49,6 +49,17 @@ class PropertyController extends Controller
     }
 
     /** Detalle de una propiedad, PÚBLICO (no requiere login) */
+    /** Página exclusiva del cliente: solo las propiedades asociadas a su cuenta */
+    public function misPropiedades(): void
+    {
+        Auth::requireRole('cliente');
+
+        $propertyModel = new Property();
+        $propiedades = $propertyModel->misPropiedades(Auth::id());
+
+        $this->render('properties/mis_propiedades', ['propiedades' => $propiedades]);
+    }
+
     public function show(string $id): void
     {
         $property = $this->findOrFail((int) $id);
