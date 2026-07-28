@@ -45,7 +45,7 @@
                     <span class="badge badge-estado-<?= $prop['estado'] ?>"><?= ucfirst($prop['estado']) ?></span>
                     <h3><?= htmlspecialchars($prop['titulo'], ENT_QUOTES, 'UTF-8') ?></h3>
                     <p class="property-price">$<?= number_format((float) $prop['precio'], 0, ',', '.') ?></p>
-                    <p class="property-zona">📍 <?= htmlspecialchars($prop['zona'], ENT_QUOTES, 'UTF-8') ?></p>
+                    <p class="property-zona"><?= icon('pin') ?> <?= htmlspecialchars($prop['zona'], ENT_QUOTES, 'UTF-8') ?></p>
                     <p class="property-agente">Agente: <?= htmlspecialchars($prop['agente_nombre'], ENT_QUOTES, 'UTF-8') ?></p>
 
                     <div class="card-actions">

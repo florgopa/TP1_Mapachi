@@ -2,7 +2,6 @@
     <div class="container header-inner">
         <a href="<?= BASE_URL ?>/" class="logo">
             <img src="<?= BASE_URL ?>/public/images/logolargomapachi.svg" alt="Mapachi Inmobiliaria" class="logo-img-long">
-            <span>Inmobiliaria</span>
         </a>
         <nav class="navbar">
             <a href="<?= BASE_URL ?>/">Inicio</a>

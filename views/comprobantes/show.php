@@ -15,7 +15,7 @@
     <?php if (!empty($comprobante['archivo'])): ?>
         <p>
             <a href="<?= UPLOADS_URL . '/' . rawurlencode($comprobante['archivo']) ?>" target="_blank" class="btn-link">
-                📎 Ver archivo adjunto
+                <?= icon('paperclip') ?> Ver archivo adjunto
             </a>
         </p>
     <?php endif; ?>

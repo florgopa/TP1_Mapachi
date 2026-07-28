@@ -20,28 +20,28 @@ $inicial = mb_strtoupper(mb_substr($user['nombre'], 0, 1));
     </div>
 
     <nav class="dashboard-nav">
-        <a href="<?= BASE_URL ?>/dashboard" class="<?= $isActive('/dashboard') ?>">📊 Panel</a>
+        <a href="<?= BASE_URL ?>/dashboard" class="<?= $isActive('/dashboard') ?>"><?= icon('dashboard') ?> Panel</a>
 
         <?php if (Auth::hasRole('administrador', 'agente')): ?>
-            <a href="<?= BASE_URL ?>/propiedades" class="<?= $isActive('/propiedades') ?>">🏠 Propiedades</a>
+            <a href="<?= BASE_URL ?>/propiedades" class="<?= $isActive('/propiedades') ?>"><?= icon('home') ?> Propiedades</a>
         <?php endif; ?>
 
         <?php if (Auth::hasRole('administrador')): ?>
-            <a href="<?= BASE_URL ?>/usuarios" class="<?= $isActive('/usuarios') ?>">👥 Usuarios</a>
-            <a href="<?= BASE_URL ?>/mensajes" class="<?= $isActive('/mensajes') ?>">✉️ Mensajes</a>
+            <a href="<?= BASE_URL ?>/usuarios" class="<?= $isActive('/usuarios') ?>"><?= icon('users') ?> Usuarios</a>
+            <a href="<?= BASE_URL ?>/mensajes" class="<?= $isActive('/mensajes') ?>"><?= icon('mail') ?> Mensajes</a>
         <?php endif; ?>
 
         <?php if (Auth::hasRole('cliente')): ?>
-            <a href="<?= BASE_URL ?>/mis-propiedades" class="<?= $isActive('/mis-propiedades') ?>">🏠 Mis propiedades</a>
+            <a href="<?= BASE_URL ?>/mis-propiedades" class="<?= $isActive('/mis-propiedades') ?>"><?= icon('home') ?> Mis propiedades</a>
         <?php endif; ?>
 
-        <a href="<?= BASE_URL ?>/reclamos" class="<?= $isActive('/reclamos') ?>">📋 Reclamos</a>
-        <a href="<?= BASE_URL ?>/contratos" class="<?= $isActive('/contratos') ?>">📅 <?= Auth::hasRole('cliente') ? 'Estado de alquiler' : 'Contratos' ?></a>
-        <a href="<?= BASE_URL ?>/comprobantes" class="<?= $isActive('/comprobantes') ?>">🧾 Comprobantes</a>
-        <a href="<?= BASE_URL ?>/perfil" class="<?= $isActive('/perfil') ?>">👤 Mi perfil</a>
+        <a href="<?= BASE_URL ?>/reclamos" class="<?= $isActive('/reclamos') ?>"><?= icon('clipboard') ?> Reclamos</a>
+        <a href="<?= BASE_URL ?>/contratos" class="<?= $isActive('/contratos') ?>"><?= icon('calendar') ?> <?= Auth::hasRole('cliente') ? 'Estado de alquiler' : 'Contratos' ?></a>
+        <a href="<?= BASE_URL ?>/comprobantes" class="<?= $isActive('/comprobantes') ?>"><?= icon('receipt') ?> Comprobantes</a>
+        <a href="<?= BASE_URL ?>/perfil" class="<?= $isActive('/perfil') ?>"><?= icon('user') ?> Mi perfil</a>
     </nav>
 
-    <a href="<?= BASE_URL ?>/logout" class="dashboard-logout">⏻ Cerrar sesión</a>
+    <a href="<?= BASE_URL ?>/logout" class="dashboard-logout"><?= icon('logout') ?> Cerrar sesión</a>
 </aside>
 
 <main class="dashboard-main">

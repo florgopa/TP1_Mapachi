@@ -15,7 +15,7 @@
 
         <h1><?= htmlspecialchars($property['titulo'], ENT_QUOTES, 'UTF-8') ?></h1>
         <p class="property-price">$<?= number_format((float) $property['precio'], 0, ',', '.') ?></p>
-        <p>📍 <?= htmlspecialchars($property['zona'], ENT_QUOTES, 'UTF-8') ?> — <?= htmlspecialchars($property['direccion'], ENT_QUOTES, 'UTF-8') ?></p>
+        <p><?= icon('pin') ?> <?= htmlspecialchars($property['zona'], ENT_QUOTES, 'UTF-8') ?> — <?= htmlspecialchars($property['direccion'], ENT_QUOTES, 'UTF-8') ?></p>
         <p>🛏 <?= (int) $property['dormitorios'] ?> dormitorios · 🛁 <?= (int) $property['banos'] ?> baños</p>
 
         <h3>Descripción</h3>

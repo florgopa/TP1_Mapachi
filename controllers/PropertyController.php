@@ -67,7 +67,7 @@ class PropertyController extends Controller
         $propertyModel = new Property();
         $propiedades = $propertyModel->misPropiedades(Auth::id());
 
-        $this->render('properties/mis_propiedades', ['propiedades' => $propiedades]);
+        $this->renderDashboard('properties/mis_propiedades', ['propiedades' => $propiedades]);
     }
 
     public function show(string $id): void

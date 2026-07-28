@@ -49,7 +49,7 @@ $puedeGestionar = Auth::hasRole('administrador', 'agente');
                     </td>
                     <td>
                         <?php if ($cuota['archivo']): ?>
-                            <a href="<?= UPLOADS_URL . '/' . rawurlencode($cuota['archivo']) ?>" target="_blank" class="btn-link">📎 Descargar</a>
+                            <a href="<?= UPLOADS_URL . '/' . rawurlencode($cuota['archivo']) ?>" target="_blank" class="btn-link"><?= icon('paperclip') ?> Descargar</a>
                         <?php elseif ($esInquilino && $cuota['estado'] === 'pendiente'): ?>
                             <form action="<?= BASE_URL ?>/cuotas/<?= (int) $cuota['id'] ?>/comprobante" method="POST" enctype="multipart/form-data" class="inline-form">
                                 <input type="hidden" name="csrf_token" value="<?= $csrf ?>">

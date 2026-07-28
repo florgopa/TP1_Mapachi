@@ -34,12 +34,12 @@
                 <td><span class="badge badge-<?= $prop['tipo'] ?>"><?= ucfirst($prop['tipo']) ?></span></td>
                 <td><a href="<?= BASE_URL ?>/propiedades/<?= (int) $prop['id'] ?>" class="btn-link" target="_blank">Ver enlace</a></td>
                 <td><span class="badge badge-estado-<?= $prop['estado'] ?>"><?= ucfirst($prop['estado']) ?></span></td>
-                <td><a href="<?= BASE_URL ?>/propiedades/<?= (int) $prop['id'] ?>/editar" class="btn-link">✏️</a></td>
+                <td><a href="<?= BASE_URL ?>/propiedades/<?= (int) $prop['id'] ?>/editar" class="btn-link"><?= icon('edit') ?></a></td>
                 <td>
                     <form action="<?= BASE_URL ?>/propiedades/<?= (int) $prop['id'] ?>/eliminar" method="POST"
                           onsubmit="return confirm('¿Eliminar esta propiedad?');" class="inline-form">
                         <input type="hidden" name="csrf_token" value="<?= csrf_token() ?>">
-                        <button type="submit" class="btn-link btn-danger">🗑️</button>
+                        <button type="submit" class="btn-link btn-danger"><?= icon('trash') ?></button>
                     </form>
                 </td>
             </tr>

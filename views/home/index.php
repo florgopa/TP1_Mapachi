@@ -5,6 +5,27 @@
     </div>
 </section>
 
+<section class="stats-bar">
+    <div class="container stats-bar-inner">
+        <div class="stats-bar-item">
+            <span class="stats-bar-number"><?= $stats['totalPropiedades'] ?>+</span>
+            <span class="stats-bar-label">Propiedades publicadas</span>
+        </div>
+        <div class="stats-bar-item">
+            <span class="stats-bar-number"><?= $stats['zonas'] ?></span>
+            <span class="stats-bar-label">Zonas cubiertas</span>
+        </div>
+        <div class="stats-bar-item">
+            <span class="stats-bar-number"><?= $stats['porTipo']['venta'] ?></span>
+            <span class="stats-bar-label">En venta</span>
+        </div>
+        <div class="stats-bar-item">
+            <span class="stats-bar-number"><?= $stats['porTipo']['alquiler'] ?></span>
+            <span class="stats-bar-label">En alquiler</span>
+        </div>
+    </div>
+</section>
+
 <section class="container section" id="propiedades-destacadas">
     <h2>Propiedades destacadas</h2>
     <div class="property-grid">
@@ -39,9 +60,33 @@
     </div>
 </section>
 
-<section class="container section" id="nosotros">
+<section class="services-section">
+    <div class="container">
+        <h2 style="text-align: center;">Lo que hacemos por vos</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><?= icon('home') ?></div>
+                <h3>Venta</h3>
+                <p>Te ayudamos a encontrar (o vender) la propiedad ideal, con acompañamiento en cada paso de la operación.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><?= icon('key') ?></div>
+                <h3>Alquiler</h3>
+                <p>Gestión completa de alquileres residenciales y comerciales, con contratos claros y seguimiento de pagos.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><?= icon('crane') ?></div>
+                <h3>Pozo</h3>
+                <p>Invertí en propiedades en construcción con planes de pago flexibles y seguimiento del proyecto.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="nosotros-section" id="nosotros">
+<div class="container section">
     <h2>Sobre Mapachi Inmobiliaria</h2>
-    <p>
+    <p class="section-lead">
         Somos una inmobiliaria dedicada a ayudarte a encontrar el lugar perfecto, ya sea que estés
         buscando tu primer hogar, una propiedad para inversión o un lugar ideal para alquilar.
         Con años de experiencia en el sector, ofrecemos un servicio personalizado y profesional,
@@ -49,25 +94,66 @@
     </p>
 
     <h3>¿Por qué elegirnos?</h3>
-    <ul>
-        <li>Amplia gama de propiedades: desde departamentos modernos hasta casas en venta o alquiler.</li>
-        <li>Proceso transparente y sin complicaciones, acompañándote en cada paso.</li>
-        <li>Compromiso con el cliente: tu satisfacción es nuestra prioridad.</li>
-    </ul>
+    <div class="why-grid">
+        <div class="why-card">
+            <div class="why-icon"><?= icon('grid') ?></div>
+            <p>Amplia gama de propiedades: desde departamentos modernos hasta casas en venta o alquiler.</p>
+        </div>
+        <div class="why-card">
+            <div class="why-icon"><?= icon('shield') ?></div>
+            <p>Proceso transparente y sin complicaciones, acompañándote en cada paso.</p>
+        </div>
+        <div class="why-card">
+            <div class="why-icon"><?= icon('heart') ?></div>
+            <p>Compromiso con el cliente: tu satisfacción es nuestra prioridad.</p>
+        </div>
+    </div>
 
-    <h3>Nuestros servicios</h3>
-    <ul>
-        <li>Venta de propiedades</li>
-        <li>Alquileres residenciales y comerciales</li>
-        <li>Compra de propiedades en pozo (sobre planos)</li>
-    </ul>
+    <h3>Cómo funciona</h3>
+    <div class="steps-grid">
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-icon"><?= icon('mail') ?></div>
+            <h4>Nos contactás</h4>
+            <p>Nos escribís por el formulario de contacto o elegís una propiedad del catálogo.</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-icon"><?= icon('edit') ?></div>
+            <h4>Firmás el contrato</h4>
+            <p>Nuestro equipo te acompaña en toda la gestión, sin sorpresas ni letra chica.</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-icon"><?= icon('dashboard') ?></div>
+            <h4>Accedés a tu panel</h4>
+            <p>Con tu cuenta habilitada, gestionás pagos, reclamos y todo lo demás desde un solo lugar.</p>
+        </div>
+    </div>
+</section>
 
-    <h3>Cómo funciona el sistema</h3>
-    <p>
-        La creación de cuentas de usuario es un proceso exclusivo de nuestro equipo administrativo,
-        que habilita el acceso una vez firmado el contrato correspondiente. Cada usuario (agente,
-        propietario/inquilino) cuenta con un panel personalizado según su rol dentro de la plataforma.
-    </p>
+</div>
+<section class="testimonials-section">
+    <div class="container">
+        <h2 style="text-align: center;">Lo que dicen nuestros clientes</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-avatar">M</div>
+                <p class="testimonial-text">"Encontramos nuestro depto en menos de dos semanas. El agente nos acompañó en todo el proceso, muy recomendable."</p>
+                <p class="testimonial-author">Marcos D. — Propietario</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-avatar">L</div>
+                <p class="testimonial-text">"La gestión del alquiler es súper simple, subo el comprobante desde el celular y ya está. Cero vueltas."</p>
+                <p class="testimonial-author">Lucía F. — Inquilina</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-avatar">T</div>
+                <p class="testimonial-text">"Invertí en un proyecto en pozo y pude seguir cada etapa de la construcción sin llamar por teléfono ni una vez."</p>
+                <p class="testimonial-author">Tomás I. — Inversor</p>
+            </div>
+        </div>
+    </div>
 </section>
 
 <section class="contact-section" id="contacto">

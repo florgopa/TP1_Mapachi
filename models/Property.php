@@ -118,6 +118,12 @@ class Property
         return [$whereSql, $params];
     }
 
+    /** Cantidad de zonas distintas con al menos una propiedad (para la barra de stats del home) */
+    public function countZonasDistintas(): int
+    {
+        return (int) $this->db->query('SELECT COUNT(DISTINCT zona) FROM properties')->fetchColumn();
+    }
+
     /** Traduce el parámetro de orden a un ORDER BY seguro (whitelist, nunca interpolando el input directo) */
     private function buildOrder(string $orden): string
     {
