@@ -1,4 +1,3 @@
-<section class="container section narrow">
     <a href="<?= BASE_URL ?>/comprobantes" class="btn-link">← Volver a comprobantes</a>
 
     <h1>Comprobante de pago</h1>
@@ -44,4 +43,3 @@
             <button type="submit" class="btn btn-full">Guardar</button>
         </form>
     <?php endif; ?>
-</section>

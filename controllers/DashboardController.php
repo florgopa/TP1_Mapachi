@@ -4,7 +4,12 @@ class DashboardController extends Controller
 {
     public function index(): void
     {
-        Auth::requireRole('administrador', 'agente');
+        Auth::requireLogin();
+
+        if (Auth::hasRole('cliente')) {
+            $this->indexCliente();
+            return;
+        }
 
         $propertyModel = new Property();
         $reclamoModel = new Reclamo();
@@ -28,6 +33,27 @@ class DashboardController extends Controller
             $data['mensajesRecientes'] = $messageModel->paginated(5, 0);
         }
 
-        $this->render('dashboard/index', $data);
+        $this->renderDashboard('dashboard/index', $data);
+    }
+
+    /** Panel simplificado para el cliente: sus propiedades, reclamos y próxima cuota */
+    private function indexCliente(): void
+    {
+        $propertyModel = new Property();
+        $reclamoModel = new Reclamo();
+        $contratoModel = new Contrato();
+
+        $misPropiedades = $propertyModel->misPropiedades(Auth::id());
+        $misReclamos = $reclamoModel->paginated(5, 0, ['cliente_id' => Auth::id()]);
+        $misContratos = array_merge(
+            $contratoModel->list(['inquilino_id' => Auth::id()]),
+            $contratoModel->list(['propietario_id' => Auth::id()])
+        );
+
+        $this->renderDashboard('dashboard/cliente', [
+            'propiedades' => $misPropiedades,
+            'reclamos'    => $misReclamos,
+            'contratos'   => $misContratos,
+        ]);
     }
 }

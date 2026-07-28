@@ -20,7 +20,7 @@ class ComprobanteController extends Controller
         $pagination = paginate($total);
         $comprobantes = $comprobanteModel->paginated($pagination['perPage'], $pagination['offset'], $filters);
 
-        $this->render('comprobantes/index', ['comprobantes' => $comprobantes, 'pagination' => $pagination]);
+        $this->renderDashboard('comprobantes/index', ['comprobantes' => $comprobantes, 'pagination' => $pagination]);
     }
 
     public function showCreate(): void
@@ -35,7 +35,7 @@ class ComprobanteController extends Controller
             redirect('/comprobantes');
         }
 
-        $this->render('comprobantes/create', ['propiedades' => $misPropiedades, 'csrf' => csrf_token()]);
+        $this->renderDashboard('comprobantes/create', ['propiedades' => $misPropiedades, 'csrf' => csrf_token()]);
     }
 
     public function store(): void
@@ -54,7 +54,8 @@ class ComprobanteController extends Controller
 
         $propertyModel = new Property();
         $property = $propertyModel->find($propertyId);
-        if (!$property || (int) $property['propietario_id'] !== Auth::id()) {
+        $esSuPropiedad = $property && ((int) $property['propietario_id'] === Auth::id() || (int) $property['inquilino_id'] === Auth::id());
+        if (!$esSuPropiedad) {
             $errors[] = 'La propiedad seleccionada no es válida.';
         }
 
@@ -86,7 +87,7 @@ class ComprobanteController extends Controller
         $comprobante = $this->findOrFail((int) $id);
         $this->authorizeView($comprobante);
 
-        $this->render('comprobantes/show', ['comprobante' => $comprobante, 'csrf' => csrf_token()]);
+        $this->renderDashboard('comprobantes/show', ['comprobante' => $comprobante, 'csrf' => csrf_token()]);
     }
 
     /** Admin/agente aprueba o rechaza */

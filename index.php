@@ -12,6 +12,7 @@ spl_autoload_register(function ($class) {
     $paths = [
         ROOT_DIR . '/models/' . $class . '.php',
         ROOT_DIR . '/controllers/' . $class . '.php',
+        ROOT_DIR . '/core/' . $class . '.php',
     ];
     foreach ($paths as $path) {
         if (file_exists($path)) {
@@ -62,6 +63,17 @@ $router->get('/comprobantes/nuevo', 'ComprobanteController@showCreate');
 $router->post('/comprobantes', 'ComprobanteController@store');
 $router->get('/comprobantes/{id}', 'ComprobanteController@show');
 $router->post('/comprobantes/{id}/estado', 'ComprobanteController@updateEstado');
+
+// --- Contratos de alquiler y cuotas (con ajuste automático por ICL) ---
+$router->get('/contratos', 'ContratoController@index');
+$router->get('/contratos/nuevo', 'ContratoController@showCreate');
+$router->post('/contratos', 'ContratoController@store');
+$router->get('/contratos/{id}', 'ContratoController@show');
+$router->post('/contratos/{id}/actualizar-icl', 'ContratoController@actualizarIcl');
+
+$router->post('/cuotas/{id}/comprobante', 'CuotaController@subirComprobante');
+$router->post('/cuotas/{id}/estado', 'CuotaController@actualizarEstado');
+$router->post('/cuotas/{id}/monto', 'CuotaController@cargarMonto');
 
 // --- Usuarios (solo administrador) ---
 $router->get('/usuarios', 'UserController@index');

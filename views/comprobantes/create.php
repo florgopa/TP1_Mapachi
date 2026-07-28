@@ -1,4 +1,3 @@
-<section class="container section narrow">
     <h1>Subir comprobante de pago</h1>
 
     <form action="<?= BASE_URL ?>/comprobantes" method="POST" enctype="multipart/form-data" class="form-card">
@@ -20,4 +19,3 @@
 
         <button type="submit" class="btn btn-full">Subir comprobante</button>
     </form>
-</section>

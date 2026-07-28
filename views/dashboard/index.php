@@ -1,8 +1,7 @@
-<section class="container section">
-    <h1>
-        <?= Auth::hasRole('administrador') ? 'Panel general' : 'Mi panel' ?>
-    </h1>
-    <p class="dashboard-greeting">Hola, <?= htmlspecialchars(Auth::user()['nombre'], ENT_QUOTES, 'UTF-8') ?> 👋</p>
+<h1>
+    <?= Auth::hasRole('administrador') ? 'Panel general' : 'Mi panel' ?>
+</h1>
+<p class="dashboard-greeting">Hola, <?= htmlspecialchars(Auth::user()['nombre'], ENT_QUOTES, 'UTF-8') ?> 👋</p>
 
     <div class="stats-grid">
         <div class="stat-card">
@@ -122,4 +121,3 @@
             <a href="<?= BASE_URL ?>/usuarios" class="btn btn-secondary">Gestionar usuarios</a>
         <?php endif; ?>
     </div>
-</section>

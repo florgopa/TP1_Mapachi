@@ -8,7 +8,7 @@ class ProfileController extends Controller
         $userModel = new User();
         $user = $userModel->findById(Auth::id());
 
-        $this->render('profile/show', ['user' => $user, 'csrf' => csrf_token()]);
+        $this->renderDashboard('profile/show', ['user' => $user, 'csrf' => csrf_token()]);
     }
 
     public function update(): void

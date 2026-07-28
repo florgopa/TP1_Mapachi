@@ -1,4 +1,3 @@
-<section class="container section">
     <div class="section-header">
         <h1>Comprobantes de pago</h1>
         <?php if (Auth::hasRole('cliente')): ?>
@@ -36,4 +35,3 @@
 
         <?php require VIEWS_DIR . '/partials/pagination.php'; ?>
     <?php endif; ?>
-</section>

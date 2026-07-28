@@ -1,4 +1,3 @@
-<section class="container section">
     <h1>Mensajes de contacto</h1>
 
     <table class="table">
@@ -28,4 +27,3 @@
     </table>
 
     <?php require VIEWS_DIR . '/partials/pagination.php'; ?>
-</section>

@@ -271,6 +271,11 @@ a:hover { color: var(--color-accent); }
 .badge-comp-aprobado { background: #e6f4ea; color: #2e7d32; }
 .badge-comp-rechazado { background: #fbe4e1; color: #c0392b; }
 
+.badge-cuota-a_convenir { background: #e3edfa; color: #1c5aa8; }
+.badge-cuota-pendiente { background: #fff3cd; color: #8a6d3b; }
+.badge-cuota-pagado { background: #e6f4ea; color: #2e7d32; }
+.badge-cuota-vencido { background: #fbe4e1; color: #c0392b; }
+
 /* --- Filtros --- */
 .filters {
     display: flex;
@@ -572,4 +577,115 @@ a:hover { color: var(--color-accent); }
     .logo-img { height: 32px; }
     .logo-img-long { height: 26px; }
     .btn { padding: 9px 16px; font-size: .9rem; }
+}
+
+/* =========================================================
+   PANEL (sidebar) — layout de gestión para usuarios logueados
+   ========================================================= */
+
+.dashboard-body { background: var(--color-primary); }
+.dashboard-shell {
+    display: flex;
+    min-height: 100vh;
+}
+
+.dashboard-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    background: var(--color-bg);
+    padding: 24px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.dashboard-logo { display: block; margin-bottom: 20px; padding: 0 6px; }
+.dashboard-logo img { height: 30px; }
+
+.dashboard-user { text-align: center; margin-bottom: 22px; }
+.dashboard-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+}
+.dashboard-username { font-weight: 700; font-size: .95rem; margin: 0; }
+.dashboard-userrole { color: var(--color-muted); font-size: .8rem; margin: 2px 0 0; }
+
+.dashboard-nav { display: flex; flex-direction: column; gap: 3px; flex: 1; }
+.dashboard-nav a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: var(--color-text) !important;
+    font-size: .9rem;
+    font-weight: 600;
+}
+.dashboard-nav a:hover { background: rgba(11, 61, 63, 0.06); color: var(--color-primary) !important; }
+.dashboard-nav a.active { background: var(--color-primary); color: #fff !important; }
+
+.dashboard-logout {
+    display: block;
+    padding: 10px 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    color: var(--color-error) !important;
+    font-weight: 600;
+    font-size: .9rem;
+    border-top: 1px solid var(--color-border);
+    padding-top: 16px;
+}
+
+.dashboard-main {
+    flex: 1;
+    padding: 30px 34px;
+    min-width: 0;
+}
+.dashboard-card {
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    padding: 30px;
+    min-height: calc(100vh - 60px);
+}
+.dashboard-card h1 { margin-top: 0; }
+
+/* Filas expandibles (usuarios, reclamos) */
+.expand-row { cursor: pointer; }
+.expand-row td:first-child { display: flex; align-items: center; gap: 8px; }
+.expand-row .expand-icon { transition: transform 0.15s ease; display: inline-block; color: var(--color-accent); }
+.expand-row.open .expand-icon { transform: rotate(90deg); }
+.expand-detail { display: none; background: var(--color-bg); }
+.expand-detail.open { display: table-row; }
+.expand-detail td { padding: 16px 20px; }
+.expand-subtable { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; }
+.expand-subtable th, .expand-subtable td { padding: 8px 12px; font-size: .85rem; text-align: left; border-bottom: 1px solid var(--color-border); }
+.expand-subtable th { background: var(--color-primary-light); color: #fff; font-weight: 600; }
+
+@media (max-width: 900px) {
+    .dashboard-shell { flex-direction: column; }
+    .dashboard-sidebar {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        padding: 14px;
+    }
+    .dashboard-logo { margin-bottom: 0; }
+    .dashboard-user { display: flex; align-items: center; gap: 8px; margin: 0 10px 0 0; text-align: left; }
+    .dashboard-avatar { width: 34px; height: 34px; font-size: .9rem; margin: 0; }
+    .dashboard-username, .dashboard-userrole { display: none; }
+    .dashboard-nav { flex-direction: row; flex-wrap: wrap; gap: 4px; }
+    .dashboard-nav a { padding: 7px 10px; font-size: .8rem; }
+    .dashboard-logout { border-top: none; padding-top: 7px; margin-top: 0; }
+    .dashboard-main { padding: 16px; }
+    .dashboard-card { padding: 18px; min-height: auto; }
 }

@@ -8,13 +8,31 @@ class UserController extends Controller
     {
         Auth::requireRole('administrador');
         $userModel = new User();
-        $this->render('users/index', ['users' => $userModel->all()]);
+        $propertyModel = new Property();
+        $reclamoModel = new Reclamo();
+
+        $users = $userModel->all();
+
+        // Para cada usuario cliente, traemos sus propiedades asociadas y la
+        // cantidad de reclamos, para mostrarlo en la fila expandible.
+        foreach ($users as &$u) {
+            if ($u['role_nombre'] === 'cliente') {
+                $u['propiedades'] = $propertyModel->misPropiedades((int) $u['id']);
+                $u['reclamos_count'] = $reclamoModel->count(['cliente_id' => (int) $u['id']]);
+            } else {
+                $u['propiedades'] = [];
+                $u['reclamos_count'] = 0;
+            }
+        }
+        unset($u);
+
+        $this->renderDashboard('users/index', ['users' => $users]);
     }
 
     public function showCreate(): void
     {
         Auth::requireRole('administrador');
-        $this->render('users/create', ['csrf' => csrf_token()]);
+        $this->renderDashboard('users/create', ['csrf' => csrf_token()]);
     }
 
     public function store(): void
@@ -47,7 +65,7 @@ class UserController extends Controller
     {
         Auth::requireRole('administrador');
         $user = $this->findOrFail((int) $id);
-        $this->render('users/edit', ['user' => $user, 'csrf' => csrf_token()]);
+        $this->renderDashboard('users/edit', ['user' => $user, 'csrf' => csrf_token()]);
     }
 
     public function update(string $id): void

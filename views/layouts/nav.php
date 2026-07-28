@@ -2,6 +2,7 @@
     <div class="container header-inner">
         <a href="<?= BASE_URL ?>/" class="logo">
             <img src="<?= BASE_URL ?>/public/images/logolargomapachi.svg" alt="Mapachi Inmobiliaria" class="logo-img-long">
+            <span>Inmobiliaria</span>
         </a>
         <nav class="navbar">
             <a href="<?= BASE_URL ?>/">Inicio</a>
@@ -22,6 +23,7 @@
                 <?php endif; ?>
                 <a href="<?= BASE_URL ?>/reclamos">Reclamos</a>
                 <a href="<?= BASE_URL ?>/comprobantes">Comprobantes</a>
+                <a href="<?= BASE_URL ?>/contratos">Contratos</a>
 
                 <span class="nav-user">👤 <a href="<?= BASE_URL ?>/perfil" style="color: inherit;"><?= htmlspecialchars(Auth::user()['nombre'], ENT_QUOTES, 'UTF-8') ?></a>
                     <small>(<?= htmlspecialchars(Auth::role(), ENT_QUOTES, 'UTF-8') ?>)</small>

@@ -41,6 +41,15 @@ class PropertyController extends Controller
         $pagination = paginate($total);
         $properties = $propertyModel->paginated($pagination['perPage'], $pagination['offset'], $filters);
 
+        if (Auth::hasRole('administrador', 'agente')) {
+            $this->renderDashboard('properties/dashboard_index', [
+                'properties' => $properties,
+                'pagination' => $pagination,
+                'filters'    => $filters,
+            ]);
+            return;
+        }
+
         $this->render('properties/index', [
             'properties' => $properties,
             'pagination' => $pagination,
@@ -49,6 +58,7 @@ class PropertyController extends Controller
     }
 
     /** Detalle de una propiedad, PÚBLICO (no requiere login) */
+
     /** Página exclusiva del cliente: solo las propiedades asociadas a su cuenta */
     public function misPropiedades(): void
     {
@@ -71,7 +81,7 @@ class PropertyController extends Controller
         Auth::requireRole('administrador', 'agente');
 
         $userModel = new User();
-        $this->render('properties/create', [
+        $this->renderDashboard('properties/create', [
             'agentes'  => Auth::hasRole('administrador') ? $userModel->agentes() : [],
             'clientes' => $userModel->clientes(),
             'csrf'     => csrf_token(),
@@ -118,7 +128,7 @@ class PropertyController extends Controller
         $this->authorizeManage($property);
 
         $userModel = new User();
-        $this->render('properties/edit', [
+        $this->renderDashboard('properties/edit', [
             'property' => $property,
             'agentes'  => Auth::hasRole('administrador') ? $userModel->agentes() : [],
             'clientes' => $userModel->clientes(),

@@ -51,6 +51,6 @@ class PageController extends Controller
         $pagination = paginate($total);
         $mensajes = $messageModel->paginated($pagination['perPage'], $pagination['offset']);
 
-        $this->render('pages/mensajes', ['mensajes' => $mensajes, 'pagination' => $pagination]);
+        $this->renderDashboard('pages/mensajes', ['mensajes' => $mensajes, 'pagination' => $pagination]);
     }
 }

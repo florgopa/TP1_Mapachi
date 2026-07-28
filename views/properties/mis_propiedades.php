@@ -18,6 +18,12 @@
                     <div class="property-body">
                         <span class="badge badge-<?= $prop['tipo'] ?>"><?= ucfirst($prop['tipo']) ?></span>
                         <span class="badge badge-estado-<?= $prop['estado'] ?>"><?= ucfirst($prop['estado']) ?></span>
+                        <?php if ((int) $prop['propietario_id'] === Auth::id()): ?>
+                            <span class="badge badge-cuota-pagado">Sos el dueño</span>
+                        <?php endif; ?>
+                        <?php if ((int) $prop['inquilino_id'] === Auth::id()): ?>
+                            <span class="badge badge-cuota-pendiente">Sos el inquilino</span>
+                        <?php endif; ?>
                         <h3><?= htmlspecialchars($prop['titulo'], ENT_QUOTES, 'UTF-8') ?></h3>
                         <p class="property-zona">📍 <?= htmlspecialchars($prop['zona'], ENT_QUOTES, 'UTF-8') ?></p>
                         <p class="property-agente">Agente: <?= htmlspecialchars($prop['agente_nombre'], ENT_QUOTES, 'UTF-8') ?></p>
@@ -29,7 +35,8 @@
     <?php endif; ?>
 
     <div class="dashboard-actions">
-        <a href="<?= BASE_URL ?>/reclamos/nuevo" class="btn">Levantar un reclamo</a>
+        <a href="<?= BASE_URL ?>/contratos" class="btn">Ver mis contratos y cuotas</a>
+        <a href="<?= BASE_URL ?>/reclamos/nuevo" class="btn btn-secondary">Levantar un reclamo</a>
         <a href="<?= BASE_URL ?>/comprobantes/nuevo" class="btn btn-secondary">Subir comprobante de pago</a>
     </div>
 </section>

@@ -1,4 +1,3 @@
-<section class="container section narrow">
     <h1>Mi perfil</h1>
     <p style="color: var(--color-muted); margin-top: -10px;">
         Rol: <strong><?= htmlspecialchars(ucfirst(Auth::role()), ENT_QUOTES, 'UTF-8') ?></strong>
@@ -27,4 +26,3 @@
 
         <button type="submit" class="btn btn-full">Guardar cambios</button>
     </form>
-</section>

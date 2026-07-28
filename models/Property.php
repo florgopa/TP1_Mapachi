@@ -149,11 +149,21 @@ class Property
             'SELECT p.*, a.nombre AS agente_nombre
              FROM properties p
              JOIN users a ON a.id = p.agente_id
-             WHERE p.propietario_id = :cliente_id
+             WHERE p.propietario_id = :cliente_id OR p.inquilino_id = :cliente_id2
              ORDER BY p.created_at DESC'
         );
-        $stmt->execute(['cliente_id' => $clienteId]);
+        $stmt->execute(['cliente_id' => $clienteId, 'cliente_id2' => $clienteId]);
         return $stmt->fetchAll();
+    }
+
+    /** ¿Ese cliente ya figura como inquilino de OTRA propiedad? (regla: un inquilino, una propiedad) */
+    public function inquilinoTieneOtraPropiedad(int $inquilinoId, int $exceptoPropertyId = 0): bool
+    {
+        $stmt = $this->db->prepare(
+            'SELECT COUNT(*) FROM properties WHERE inquilino_id = :inquilino_id AND id != :except_id'
+        );
+        $stmt->execute(['inquilino_id' => $inquilinoId, 'except_id' => $exceptoPropertyId]);
+        return (int) $stmt->fetchColumn() > 0;
     }
 
     public function create(array $data): int

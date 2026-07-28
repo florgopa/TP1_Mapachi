@@ -19,11 +19,16 @@ class ReclamoController extends Controller
         }
         // administrador: sin filtro, ve todos
 
-        $total = $reclamoModel->count($filters);
-        $pagination = paginate($total);
-        $reclamos = $reclamoModel->paginated($pagination['perPage'], $pagination['offset'], $filters);
+        $reclamos = $reclamoModel->paginated(50, 0, $filters);
 
-        $this->render('reclamos/index', ['reclamos' => $reclamos, 'pagination' => $pagination]);
+        $data = ['reclamos' => $reclamos, 'csrf' => csrf_token()];
+
+        if (Auth::hasRole('cliente')) {
+            $propertyModel = new Property();
+            $data['propiedades'] = $propertyModel->misPropiedades(Auth::id());
+        }
+
+        $this->renderDashboard('reclamos/index', $data);
     }
 
     public function showCreate(): void
@@ -38,7 +43,7 @@ class ReclamoController extends Controller
             redirect('/reclamos');
         }
 
-        $this->render('reclamos/create', ['propiedades' => $misPropiedades, 'csrf' => csrf_token()]);
+        $this->renderDashboard('reclamos/create', ['propiedades' => $misPropiedades, 'csrf' => csrf_token()]);
     }
 
     public function store(): void
@@ -66,7 +71,8 @@ class ReclamoController extends Controller
         // para que no pueda levantar un reclamo sobre una propiedad ajena manipulando el form.
         $propertyModel = new Property();
         $property = $propertyModel->find($propertyId);
-        if (!$property || (int) $property['propietario_id'] !== Auth::id()) {
+        $esSuPropiedad = $property && ((int) $property['propietario_id'] === Auth::id() || (int) $property['inquilino_id'] === Auth::id());
+        if (!$esSuPropiedad) {
             $errors[] = 'La propiedad seleccionada no es válida.';
         }
 
@@ -93,7 +99,7 @@ class ReclamoController extends Controller
         $reclamo = $this->findOrFail((int) $id);
         $this->authorizeView($reclamo);
 
-        $this->render('reclamos/show', ['reclamo' => $reclamo, 'csrf' => csrf_token()]);
+        $this->renderDashboard('reclamos/show', ['reclamo' => $reclamo, 'csrf' => csrf_token()]);
     }
 
     /** Admin/agente responde y cambia el estado */
