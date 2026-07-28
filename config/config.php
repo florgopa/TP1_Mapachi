@@ -26,7 +26,7 @@ define('UPLOADS_DIR', ROOT_DIR . '/public/uploads');
 define('UPLOADS_URL', BASE_URL . '/public/uploads');
 
 // Paginación
-define('ITEMS_PER_PAGE', 4);
+define('ITEMS_PER_PAGE', 9);
 
 require_once ROOT_DIR . '/config/database.php';
 require_once ROOT_DIR . '/core/Helpers.php';
