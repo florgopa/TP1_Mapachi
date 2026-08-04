@@ -87,7 +87,7 @@ a:hover { color: var(--color-accent); }
     width: auto;
 }
 .logo-img-long {
-    height: 32px;
+    height: 62px;
     width: auto;
 }
 .logo span { font-weight: 400; opacity: .85; font-size: 1rem; }

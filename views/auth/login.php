@@ -34,14 +34,6 @@
                 <button type="submit" class="btn btn-full">Iniciar sesión</button>
             </form>
 
-            <div class="login-hint">
-                <p><strong>Usuarios de prueba</strong> (contraseña: <code>123456</code>)</p>
-                <ul>
-                    <li>admin@mapachi.com — Administrador</li>
-                    <li>agente@mapachi.com — Agente</li>
-                    <li>cliente@mapachi.com — Cliente</li>
-                </ul>
-            </div>
             <a href="<?= BASE_URL ?>/" class="btn-link">← Volver al inicio</a>
         </div>
     </main>
