@@ -20,7 +20,11 @@ if (session_status() === PHP_SESSION_NONE) {
 // Ruta base del proyecto dentro del dominio (NO incluye protocolo ni host,
 // así funciona sin importar si entrás por localhost, 127.0.0.1, una IP de red, etc.)
 // Ejemplo: si accedés como http://localhost/mapachi/ dejar '/mapachi'
-define('BASE_PATH', '');
+define('BASE_PATH', getenv('BASE_PATH') !== false
+    ? rtrim(getenv('BASE_PATH'), '/')
+    : '/TP1_Mapachi'
+);
+
 define('BASE_URL', BASE_PATH);
 // Rutas físicas
 define('ROOT_DIR', dirname(__DIR__));
